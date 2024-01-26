@@ -1,0 +1,23 @@
+class KontoDebetowe(Konto):
+    def __init__(self, imie, nazwisko, stan_konta, debet):
+        Konto.__init__(self, imie, nazwisko, stan_konta)
+        self.debet = debet
+
+    def __str__(self):
+        ret = f"{self.imie} {self.nazwisko} "
+        ret += f"z klasy {self.__class__.__name__} "
+        ret += f"jest wlascielem konta z obecnym stanem: {self.stan_konta} zł z debetem {self.debet}"
+        return ret
+
+    def sprawdz_debet(debet):
+        assert isinstance(debet, int), 'debet musi być liczbą ujemną'
+        assert debet < 0, 'debet zawsze ujemny --'
+        return
+
+    def get_debet(self):
+        return self.debet
+
+    def set_debet(self, var):
+        __class__.sprawdz_debet(var)
+        self.debet = var
+        return ""
